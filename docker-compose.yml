@@ -1,5 +1,4 @@
 version: "3"
-
 networks:
   loki:
 
@@ -7,7 +6,7 @@ services:
   loki:
     image: grafana/loki:2.3.0
     volumes:
-      - /Users/faza/Documents/Project Latihan/grafana-loki-/loki-config.yaml:/etc/loki/loki-config.yaml
+      - ./loki-config.yaml:/etc/loki/loki-config.yaml
     ports:
       - "3100:3100"
     command: -config.file=/etc/loki/local-config.yaml
