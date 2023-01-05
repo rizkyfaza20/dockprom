@@ -12,6 +12,7 @@ schema_config:
       schema: v11
       index:
         prefix: index_
+  
         period: 24h
 common:
   path_prefix: /loki
