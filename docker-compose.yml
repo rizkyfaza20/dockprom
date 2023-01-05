@@ -34,10 +34,6 @@ services:
         image: gcr.io/cadvisor/cadvisor:latest
         container_name: cadvisor
         privileged: true
-        ports:
-            - "8180:8180"
-        expose:
-          - 8180
         devices:
             - /dev/kmsg:/dev/kmsg
         volumes:
