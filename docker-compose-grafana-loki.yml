@@ -1,0 +1,26 @@
+version: '3'
+services:
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./grafana:/etc/grafana
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: HelloWorld1234!@#
+      GF_INSTALL_PLUGINS: grafana-piechart-panel,grafana-clock-panel,grafana-worldmap-panel
+      
+  loki:
+    image: grafana/loki
+    ports:
+      - "3100:3100"
+    volumes:
+      - ./loki-config.yaml:/etc/loki/config.yaml
+
+  promtail:
+    image: grafana/promtail:latest
+    volumes:
+      - /var/log:/var/log
+      - ./promtail-local-config.yaml:/etc/promtail/config.yaml
+    command: -config.file=/etc/promtail/config.yaml
