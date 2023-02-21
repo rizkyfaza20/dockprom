@@ -1,11 +1,14 @@
 route:
-    receiver: 'slack'
+  group_by: [Services Alert]
+  receiver: emailservices
 
 receivers:
-    - name: 'slack'
-      slack_configs:
-          - send_resolved: true
-            text: "{{ .CommonAnnotations.description }}"
-            username: 'Prometheus'
-            channel: '#<channel-name>'
-            api_url: 'https://hooks.slack.com/services/<webhook-id>'
+- name: emailservices
+  email_configs:
+  - to: rizki.faza@livecom.com;lukman.sudarma@livecom.com
+    from: noreply-monitoring@livecom.com
+    smarthost: mail.livecom-dev.com:587
+    auth_username: noreply-monitoring@livecom.com
+    auth_identity: noreply-monitoring@livecom.com
+    auth_password: Uech1Goh3aeshothahquei7OKai7Ap5c
+    send_resolved: true
