@@ -13,8 +13,7 @@ services:
         - ./loki-config.yaml:/etc/loki/config.yaml
     promtail:
         depends_on:
-            - read
-            - write
+         - loki
         image: grafana/promtail:latest
         volumes:
             - /var/log:/var/log
@@ -92,8 +91,7 @@ services:
 
     grafana:
         depends_on:
-            - read
-            - write
+            - loki
         image: grafana/grafana:latest
         volumes:
             - grafana_data:/var/lib/grafana
