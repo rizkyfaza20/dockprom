@@ -38,6 +38,36 @@ scrape_configs:
     static_configs:
       - targets: ['172.16.250.128:7090']
 
+  - job_name: 'client_livecom-lab-c2a'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['172.16.250.128:9100']
+
+  - job_name: 'client_livecom-lab-c2a_containers'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['172.16.250.139:7090']
+
+  - job_name: 'client_livecom-auth-c3a'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['172.16.250.141:9100']
+
+  - job_name: 'client_livecom-auth-c3a_containers'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['172.16.250.128:7090']
+
+  - job_name: 'client_livecom-db-f1a'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['172.16.250.142:9100']
+
+  - job_name: 'client_livecom-db-f1a_containers'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['172.16.250.142:7090']
+
   - job_name: 'loki'
     scrape_interval: 10s
     static_configs:

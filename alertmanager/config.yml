@@ -12,7 +12,7 @@ receivers:
   email_configs:
   - to: 'rizki.faza@livecom.com;lukman.sudarma@livecom.com'
     from: 'noreply-monitoring@livecom.com'
-    smarthost: mail.livecom-dev.com:587
-    auth_username: 'noreply-monitoring@livecom.com'
-    auth_identity: 'noreply-monitoring@livecom.com'
+    smarthost: mail.livecom-dev.com:25
+    auth_username: 'noreply-monitoring@livecom-dev.com'
+    auth_identity: 'noreply-monitoring@livecom-dev.com'
     auth_password: 'ieXei7chad9kohx6ohJ2eiree2eofuz6'
