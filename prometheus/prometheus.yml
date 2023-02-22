@@ -41,7 +41,7 @@ scrape_configs:
   - job_name: 'client_livecom-lab-c2a'
     scrape_interval: 5s
     static_configs:
-      - targets: ['172.16.250.128:9100']
+      - targets: ['172.16.250.139:9100']
 
   - job_name: 'client_livecom-lab-c2a_containers'
     scrape_interval: 5s
@@ -56,7 +56,7 @@ scrape_configs:
   - job_name: 'client_livecom-auth-c3a_containers'
     scrape_interval: 5s
     static_configs:
-      - targets: ['172.16.250.128:7090']
+      - targets: ['172.16.250.141:7090']
 
   - job_name: 'client_livecom-db-f1a'
     scrape_interval: 5s
