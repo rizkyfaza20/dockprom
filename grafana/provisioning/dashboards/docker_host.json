@@ -1,7 +1,7 @@
 {
   "id": null,
-  "title": "Docker Host",
-  "description": "Docker host metrics",
+  "title": "Server Host",
+  "description": "Server Livecom host metrics",
   "tags": [
     "system"
   ],
@@ -477,7 +477,7 @@
           },
           "targets": [
             {
-              "expr": "sum(node_filesystem_free_bytes{fstype=\"aufs\"})",
+              "expr": "sum(node_filesystem_free_bytes{fstype=\"btrfs\"})",
               "interval": "30s",
               "intervalFactor": 1,
               "legendFormat": "",

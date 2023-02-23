@@ -57,7 +57,16 @@ groups:
       summary: Host out of disk space (instance {{ $labels.instance }})
       description: "Disk is almost full (< 10% left)\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
+name: services
+rules:
+  - alert: ContainerKilled
+    expr: time() - container_last_seen > 60
+    for: 0m
+    labels:
+      severity: critical
+    annotations:
+      summary: Container killed (instance {{ $labels.instance }})
+      description: "A container has disappeared\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
-- name: services
- 
+- 
   
