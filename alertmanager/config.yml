@@ -1,31 +1,30 @@
-global:
-  resolve_timeout: 
-  smtp_from: noreply-monitoring@livecom-dev.com
-  smtp_smarthost: mail.livecom-dev.com:25
-  smtp_auth_username: noreply-monitoring@livecom-dev.com
-  smtp_auth_password: ieXei7chad9kohx6ohJ2eiree2eofuz6
-
 route:
-  group_by: ['host', 'targets', 'services']
-  group_wait: 10s
-  group_interval: 10s
+  group_by: [ alertname ]
+  receiver: 'mail' # default receiver
   repeat_interval: 24h
-  receiver: email, prometheus-teams
   routes:
-  - match:
-      alertname: Watchdog
-    receiver: prometheus-teams
+    - receiver: 'teams'
+      repeat_interval: 12h
+      matchers:
+        - severity="warning"
+
+    - receiver: 'teams'
+      repeat_interval: 4h
+      matchers:
+        - severity="critical"
+
 
 receivers:
-- name: email
-  email_configs:
-  - to: rizki.faza@livecom.com;lukman.sudarma@livecom.com
-    from: noreply-monitoring@livecom-dev.com
-    smarthost: mail.livecom-dev.com:25
-    auth_username: noreply-monitoring@livecom-dev.com
-    auth_identity: noreply-monitoring@livecom-dev.com
-    auth_password: ieXei7chad9kohx6ohJ2eiree2eofuz6
+  - name: 'mail'
+    email_configs:
+      - smarthost: 'mail.livecom-dev.com:25'
+        auth_username: 'noreply-monitoring@livecom-dev.com'
+        auth_password: "ieXei7chad9kohx6ohJ2eiree2eofuz6"
+        from: 'noreply-monitoring@livecom-dev.com'
+        to: 'rizki.faza@livecom.com;lukman.sudarma@livecom.com'
+        require_tls: false
 
-- name: prometheus-teams
-  webhook_settings:
-  - url: https://livecomnl.webhook.office.com/webhookb2/0a9f5951-4fbc-4099-bb67-af7cc28a0cc6@9c3996fd-fbe8-45f2-974d-f94ab93ef17c/IncomingWebhook/93200b318d6246c682ee50bce9a95007/5619af06-2ccf-4840-99f9-78536e04b6ae
+  - name: 'teams'
+    webhook_configs:
+      - url: "http://prom2teams:7500"
+        send_resolved: true

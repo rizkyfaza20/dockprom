@@ -89,6 +89,14 @@ services:
         restart: unless-stopped
         networks:
         - world
+    
+    prom2teams:
+        image: idealista/prom2teams:2.7.0
+        restart: unless-stopped
+        environment:
+            PROM2TEAMS_CONNECTOR: ${PROM2TEAMS_CONNECTOR}
+        ports:
+          - "7500:8089"
 
     grafana:
         depends_on:
