@@ -67,6 +67,4 @@ rules:
     annotations:
       summary: Container killed (instance {{ $labels.instance }})
       description: "A container has disappeared\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-
-- 
   
