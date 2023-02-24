@@ -91,12 +91,12 @@ services:
         - world
     
     prom2teams:
-        image: idealista/prom2teams:2.7.0
+        image: idealista/prom2teams:latest
         restart: unless-stopped
         environment:
             PROM2TEAMS_CONNECTOR: ${PROM2TEAMS_CONNECTOR}
         ports:
-          - "7500:8089"
+          - "8086:8089"
         networks:
           - world
 
