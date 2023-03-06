@@ -1,5 +1,5 @@
 route:
-  group_by: [ alertname ]
+  group_by: [ 'targets', 'host', 'services' ]
   receiver: 'mail' # default receiver
   repeat_interval: 24h
   routes:
@@ -17,7 +17,7 @@ route:
 receivers:
   - name: 'mail'
     email_configs:
-      - smarthost: 'mail.livecom-dev.com:25'
+      - smarthost: 'mail.livecom-dev.com:587'
         auth_username: 'noreply-monitoring@livecom-dev.com'
         auth_password: "ieXei7chad9kohx6ohJ2eiree2eofuz6"
         from: 'noreply-monitoring@livecom-dev.com'
