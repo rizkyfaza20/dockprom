@@ -1,15 +1,15 @@
 route:
-  group_by: [ 'host', 'targets', 'services' ]
+  group_by: [ alertname ]
   receiver: 'mail' # default receiver
   repeat_interval: 24h
   routes:
     - receiver: 'teams'
-      repeat_interval: 12h
+      repeat_interval: 30s
       matchers:
         - severity="warning"
 
     - receiver: 'teams'
-      repeat_interval: 4h
+      repeat_interval: 1m
       matchers:
         - severity="critical"
 
